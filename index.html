@@ -66,4 +66,489 @@
   <h3>Q5 · Neville’s Algorithm (2 points)</h3>
   <p>When Neville’s algorithm is applied to <em>n + 1</em> data points, how many additions are performed?</p>
   <label><input type="radio" name="q5">A. (<em>n + 1</em>)(<em>n + 2</em>)/2 additions are performed.</label>
-  <la
+  <label><input type="radio" name="q5">B. Exactly <em>n</em>(<em>n + 1</em>)/2 additions are required.</label>
+  <label><input type="radio" name="q5">C. About <em>n</em><sup>2</sup> additions are needed regardless of the data spacing.</label>
+  <label><input type="radio" name="q5">D. The algorithm grows exponentially, requiring 2<sup>n</sup> additions.</label>
+</div>
+
+<!-- Q6 -->
+<div class="question" data-answer="B" data-explain="The barycentric reformulation lowers evaluation cost from O(n²) to O(n) while still requiring O(n) storage for the weights.">
+  <h3>Q6 · Barycentric Form (2 points)</h3>
+  <p>Why is the barycentric representation of the Lagrange polynomial preferred for numerical evaluation?</p>
+  <label><input type="radio" name="q6">A. It reduces the storage of weights to constant size regardless of <em>n</em>.</label>
+  <label><input type="radio" name="q6">B. It lowers the evaluation cost from O(<em>n</em><sup>2</sup>) to O(<em>n</em>).</label>
+  <label><input type="radio" name="q6">C. It completely eliminates all round‑off error in the computation.</label>
+  <label><input type="radio" name="q6">D. It automatically provides upper and lower error bounds with each evaluation.</label>
+</div>
+
+<!-- Q7 -->
+<div class="question" data-answer="C" data-explain="Imposing values of f and f′ at both ends produces a unique cubic Hermite that satisfies the four constraints.">
+  <h3>Q7 · Cubic Hermite Interpolation (2 points)</h3>
+  <p>If a cubic Hermite polynomial is constructed to match <em>f</em>(<em>x</em>) and <em>f′</em>(<em>x</em>) at both ends of an interval [<em>a</em>,<em>b</em>], what property does the resulting curve possess?</p>
+  <label><input type="radio" name="q7">A. It exactly reproduces <em>f</em>(<em>x</em>) at three interior points.</label>
+  <label><input type="radio" name="q7">B. Its definite integral equals the Simpson’s rule approximation over the same interval.</label>
+  <label><input type="radio" name="q7">C. It is the unique cubic that satisfies all four boundary conditions on value and slope.</label>
+  <label><input type="radio" name="q7">D. It minimizes ∫<sub>a</sub><sup>b</sup>(<em>f″</em>)<sup>2</sup> d<em>x</em> among all cubic polynomials.</label>
+</div>
+
+<!-- Q8 -->
+<div class="question" data-answer="A" data-explain="Inverse interpolation is most convenient when x is monotone in f and we need the interior root corresponding to a specific value of f.">
+  <h3>Q8 · Inverse Interpolation (2 points)</h3>
+  <p>When is inverse interpolation usually preferred over searching for a direct root of <em>f</em>(<em>x</em>) = 0?</p>
+  <label><input type="radio" name="q8">A. When <em>x</em> varies monotonically with <em>f</em> and an interior value of <em>x</em> corresponding to a given <em>f</em> is required.</label>
+  <label><input type="radio" name="q8">B. Whenever the available data are contaminated by significant measurement noise.</label>
+  <label><input type="radio" name="q8">C. Whenever the degree of the interpolating polynomial exceeds ten.</label>
+  <label><input type="radio" name="q8">D. When end‑point derivatives are missing from the data set.</label>
+</div>
+
+<!-- Q9 -->
+<div class="question" data-answer="A" data-explain="A natural spline forces the second derivative to vanish at both ends, giving ‘natural’ boundary conditions.">
+  <h3>Q9 · Natural Cubic Spline (2 points)</h3>
+  <p>Which pair of boundary conditions defines a natural cubic spline on [<em>a</em>,<em>b</em>]?</p>
+  <label><input type="radio" name="q9">A. The second derivative satisfies <em>y″</em>(<em>a</em>) = <em>y″</em>(<em>b</em>) = 0.</label>
+  <label><input type="radio" name="q9">B. The first derivative satisfies <em>y′</em>(<em>a</em>) = <em>y′</em>(<em>b</em>) = 0.</label>
+  <label><input type="radio" name="q9">C. The function values satisfy <em>y</em>(<em>a</em>) = <em>y</em>(<em>b</em>) = 0.</label>
+  <label><input type="radio" name="q9">D. The third derivative satisfies <em>y‴</em>(<em>a</em>) = <em>y‴</em>(<em>b</em>) = 0.</label>
+</div>
+
+<!-- Q10 -->
+<div class="question" data-answer="A" data-explain="Compared with one high‑degree polynomial, a piecewise cubic spline generally achieves a smaller maximum error for smooth data because each piece is lower degree and oscillations are suppressed.">
+  <h3>Q10 · Spline vs Global Polynomial (2 points)</h3>
+  <p>Which statement accurately compares a cubic spline with a single high‑degree global interpolating polynomial for smooth data?</p>
+  <label><input type="radio" name="q10">A. A cubic spline usually yields a lower maximum interpolation error over the interval.</label>
+  <label><input type="radio" name="q10">B. A cubic spline requires fewer floating‑point operations than a single global polynomial of comparable accuracy.</label>
+  <label><input type="radio" name="q10">C. A cubic spline completely avoids solving any linear system of equations.</label>
+  <label><input type="radio" name="q10">D. A cubic spline is guaranteed to preserve monotonicity of the underlying data.</label>
+</div>
+
+<!-- Q11 -->
+<div class="question" data-answer="C" data-explain="Three equally spaced points can always be interpolated by a polynomial up to degree 2, but matching sin(x) at 0, π/2, and π actually requires a cubic to reproduce the curvature.">
+  <h3>Q11 · Degree Required for Matching Data (2 points)</h3>
+  <p>What is the minimum degree of a polynomial that exactly fits the function sin <em>x</em> at the points 0, π⁄2, and π?</p>
+  <label><input type="radio" name="q11">A. A first‑degree (linear) polynomial suffices.</label>
+  <label><input type="radio" name="q11">B. A second‑degree (quadratic) polynomial is required.</label>
+  <label><input type="radio" name="q11">C. A third‑degree (cubic) polynomial is necessary.</label>
+  <label><input type="radio" name="q11">D. A polynomial of degree higher than three is inevitable.</label>
+</div>
+
+<!-- Q12 -->
+<div class="question" data-answer="A" data-explain="Forward‑difference tables collapse to zero in row k for any underlying polynomial of degree k−1, making option A correct.">
+  <h3>Q12 · Forward Difference Table (2 points)</h3>
+  <p>The forward‑difference table for <em>n + 1</em> equally‑spaced data points becomes identically zero starting with row <em>k</em> when the data originate from a polynomial of what degree?</p>
+  <label><input type="radio" name="q12">A. Degree <em>k − 1</em>.</label>
+  <label><input type="radio" name="q12">B. Degree <em>k</em>.</label>
+  <label><input type="radio" name="q12">C. Degree <em>k + 1</em>.</label>
+  <label><input type="radio" name="q12">D. Degree 2<em>k</em>.</label>
+</div>
+
+<!-- Q13 -->
+<div class="question" data-answer="C" data-explain="High‑degree global polynomials on equispaced nodes oscillate near the endpoints, inflating the maximum error—this is the key drawback.">
+  <h3>Q13 · Drawbacks of Global Interpolation (2 points)</h3>
+  <p>What is generally considered the main disadvantage of using a single high‑degree polynomial to interpolate smooth data on an equispaced grid?</p>
+  <label><input type="radio" name="q13">A. Excessive round‑off error in computing the polynomial’s coefficients.</label>
+  <label><input type="radio" name="q13">B. Lack of continuity in the first derivative across the interval.</label>
+  <label><input type="radio" name="q13">C. Pronounced oscillations, particularly near the interval endpoints.</label>
+  <label><input type="radio" name="q13">D. A complete inability to reproduce constant functions exactly.</label>
+</div>
+
+<!-- Q14 -->
+<div class="question" data-answer="B" data-explain="When two abscissae coincide, the divided‑difference quotient degenerates to a derivative value, not infinity or zero.">
+  <h3>Q14 · Repeated Nodes in Divided Differences (2 points)</h3>
+  <p>When two x‑values in the data set coincide, the usual divided‑difference quotient must be replaced by what quantity?</p>
+  <label><input type="radio" name="q14">A. It is replaced by zero because the numerator also becomes zero.</label>
+  <label><input type="radio" name="q14">B. It is replaced by the corresponding derivative of the function at that point.</label>
+  <label><input type="radio" name="q14">C. It is replaced by a cubic spline knot value chosen by the user.</label>
+  <label><input type="radio" name="q14">D. It is replaced by the arithmetic mean of the neighboring divided differences.</label>
+</div>
+
+<!-- Q15 -->
+<div class="question" data-answer="D" data-explain="Differentiating an interpolating polynomial of degree n typically lowers the order of accuracy by 1 power of h, so the error is O(h^{n−1}).">
+  <h3>Q15 · Differentiating an Interpolant (2 points)</h3>
+  <p>When an interpolating polynomial is analytically differentiated, what is the order of the truncation error of the resulting derivative at a node?</p>
+  <label><input type="radio" name="q15">A. It is first‑order, O(<em>h</em>).</label>
+  <label><input type="radio" name="q15">B. It is second‑order, O(<em>h</em><sup>2</sup>).</label>
+  <label><input type="radio" name="q15">C. It is <em>n</em>‑th order, O(<em>h</em><sup>n</sup>).</label>
+  <label><input type="radio" name="q15">D. It is (<em>n − 1</em>)‑st order, O(<em>h</em><sup>n−1</sup>).</label>
+</div>
+
+<!-- Q16 -->
+<div class="question" data-answer="A" data-explain="The forward‑difference quotient retains an O(h) truncation term from the first neglected derivative.">
+  <h3>Q16 · Forward Difference Approximation (2 points)</h3>
+  <p>The standard forward‑difference formula [<em>f</em>(<em>x</em> + <em>h</em>) − <em>f</em>(<em>x</em>)]⁄<em>h</em> approximates <em>f′</em>(<em>x</em>) with which leading order of truncation error?</p>
+  <label><input type="radio" name="q16">A. The error is first‑order, O(<em>h</em>).</label>
+  <label><input type="radio" name="q16">B. The error is second‑order, O(<em>h</em><sup>2</sup>).</label>
+  <label><input type="radio" name="q16">C. The error is third‑order, O(<em>h</em><sup>3</sup>).</label>
+  <label><input type="radio" name="q16">D. The error grows like O(<em>h</em><sup>−1</sup>).</label>
+</div>
+
+<!-- Q17 -->
+<div class="question" data-answer="B" data-explain="A three‑point centered difference has two equal truncation terms canceling, leaving an O(h²) leading error.">
+  <h3>Q17 · Centered Difference Accuracy (2 points)</h3>
+  <p>What is the leading order of the truncation error for the three‑point centered difference approximation of <em>f′</em>(<em>x</em>)?</p>
+  <label><input type="radio" name="q17">A. First‑order.</label>
+  <label><input type="radio" name="q17">B. Second‑order.</label>
+  <label><input type="radio" name="q17">C. Third‑order.</label>
+  <label><input type="radio" name="q17">D. Fourth‑order.</label>
+</div>
+
+<!-- Q18 -->
+<div class="question" data-answer="B" data-explain="One level of Richardson extrapolation doubles the order—from O(h²) to O(h⁴).">
+  <h3>Q18 · Richardson Extrapolation (2 points)</h3>
+  <p>If Richardson extrapolation is applied to combine two O(<em>h</em><sup>2</sup>) centered‑difference estimates, how does the formal order of accuracy change?</p>
+  <label><input type="radio" name="q18">A. The order remains the same.</label>
+  <label><input type="radio" name="q18">B. The order increases by two, becoming fourth‑order.</label>
+  <label><input type="radio" name="q18">C. The order increases by three, becoming fifth‑order.</label>
+  <label><input type="radio" name="q18">D. The order quadruples regardless of the step size.</label>
+</div>
+
+<!-- Q19 -->
+<div class="question" data-answer="B" data-explain="Minimising total error gives h≈(3ε/M)^{1/3} for the centered derivative formula.">
+  <h3>Q19 · Optimal Step Size (2 points)</h3>
+  <p>For a three‑point centered difference, what step size approximately minimises the combined round‑off (ε) and truncation (<em>M</em>) errors?</p>
+  <label><input type="radio" name="q19">A. √(ε⁄<em>M</em>)</label>
+  <label><input type="radio" name="q19">B. (3ε⁄<em>M</em>)<sup>1⁄3</sup></label>
+  <label><input type="radio" name="q19">C. ε⁄<em>M</em></label>
+  <label><input type="radio" name="q19">D. (ε<em>M</em>)<sup>1⁄2</sup></label>
+</div>
+
+<!-- Q20 -->
+<div class="question" data-answer="C" data-explain="Beyond the optimum, the truncation term shrinks slower than the round‑off term grows, so the total error actually rises.">
+  <h3>Q20 · Error Behaviour with Decreasing Step (2 points)</h3>
+  <p>What typically happens to the total error if the step size <em>h</em> is reduced below the optimal value in a finite‑difference derivative estimate?</p>
+  <label><input type="radio" name="q20">A. The error continues to decrease at the same O(<em>h</em><sup>2</sup>) rate.</label>
+  <label><input type="radio" name="q20">B. The error plateaus, neither increasing nor decreasing further.</label>
+  <label><input type="radio" name="q20">C. The error increases because round‑off begins to dominate.</label>
+  <label><input type="radio" name="q20">D. The error stays constant for all smaller <em>h</em>.</label>
+</div>
+
+<!-- Q21 -->
+<div class="question" data-answer="C" data-explain="A five‑point forward formula samples f at x, x+h, x+2h, x+3h, and x+4h—five points total.">
+  <h3>Q21 · Five‑Point Forward Difference (2 points)</h3>
+  <p>How many function evaluations are required to compute one derivative estimate using the five‑point forward‑difference stencil?</p>
+  <label><input type="radio" name="q21">A. Three evaluations are sufficient.</label>
+  <label><input type="radio" name="q21">B. Four evaluations are needed.</label>
+  <label><input type="radio" name="q21">C. Five evaluations are required.</label>
+  <label><input type="radio" name="q21">D. Six evaluations are unavoidable.</label>
+</div>
+
+<!-- Q22 -->
+<div class="question" data-answer="B" data-explain="The second‑derivative central formula eliminates the O(h) terms, leaving an O(h²) leading error.">
+  <h3>Q22 · Second‑Derivative Formula (2 points)</h3>
+  <p>The approximation [<em>f</em>(<em>x</em> + <em>h</em>) − 2<em>f</em>(<em>x</em>) + <em>f</em>(<em>x</em> − <em>h</em>)]⁄<em>h</em><sup>2</sup> estimates <em>f″</em>(<em>x</em>) with what order of truncation error?</p>
+  <label><input type="radio" name="q22">A. First‑order.</label>
+  <label><input type="radio" name="q22">B. Second‑order.</label>
+  <label><input type="radio" name="q22">C. Third‑order.</label>
+  <label><input type="radio" name="q22">D. Fourth‑order.</label>
+</div>
+
+<!-- Q23 -->
+<div class="question" data-answer="C" data-explain="Richardson extrapolation combines two lower‑order estimates to cancel the leading truncation term at no extra function cost.">
+  <h3>Q23 · Improving Accuracy without Extra Calls (2 points)</h3>
+  <p>Which technique can raise the accuracy order of an existing O(<em>h</em><sup>2</sup>) finite‑difference derivative estimate to O(<em>h</em><sup>4</sup>) without additional function evaluations?</p>
+  <label><input type="radio" name="q23">A. Applying a higher‑order forward‑difference stencil.</label>
+  <label><input type="radio" name="q23">B. Using Hermite interpolation to recover missing terms.</label>
+  <label><input type="radio" name="q23">C. Performing Richardson extrapolation on two step sizes.</label>
+  <label><input type="radio" name="q23">D. Switching to Romberg integration.</label>
+</div>
+
+<!-- Q24 -->
+<div class="question" data-answer="A" data-explain="A finite‑difference stencil with m nodes is exact for polynomials of degree m−1 because all higher derivatives vanish.">
+  <h3>Q24 · Polynomial Exactness of Finite Differences (2 points)</h3>
+  <p>Finite‑difference formulas derived from the Taylor series are guaranteed to be exact for polynomials up to what degree relative to the number of stencil nodes <em>m</em>?</p>
+  <label><input type="radio" name="q24">A. Up to degree <em>m − 1</em>.</label>
+  <label><input type="radio" name="q24">B. One less than the truncation order stated for the formula.</label>
+  <label><input type="radio" name="q24">C. Twice the number of nodes minus one.</label>
+  <label><input type="radio" name="q24">D. Finite differences are exact for polynomials of unlimited degree.</label>
+</div>
+
+<!-- Q25 -->
+<div class="question" data-answer="B" data-explain="When f(x+h) and f(x−h) nearly cancel, round‑off dominates the subtraction and elevates relative error.">
+  <h3>Q25 · Subtractive Cancellation (2 points)</h3>
+  <p>In which situation is subtractive cancellation most severe when computing a centered finite difference?</p>
+  <label><input type="radio" name="q25">A. When the step size <em>h</em> is large relative to the scale of the function.</label>
+  <label><input type="radio" name="q25">B. When <em>f</em>(<em>x</em> + <em>h</em>) and <em>f</em>(<em>x</em> − <em>h</em>) are nearly equal in magnitude.</label>
+  <label><input type="radio" name="q25">C. When the function is monotone increasing over the stencil.</label>
+  <label><input type="radio" name="q25">D. Only when double‑precision arithmetic is unavailable.</label>
+</div>
+
+<!-- Q26 -->
+<div class="question" data-answer="A" data-explain="Adding more terms to the Taylor expansion reduces truncation error order but does not affect round‑off directly.">
+  <h3>Q26 · Higher‑Order Taylor Terms (2 points)</h3>
+  <p>What is the primary effect of including additional terms from the Taylor series when constructing a forward‑difference formula?</p>
+  <label><input type="radio" name="q26">A. It reduces the order of the remaining truncation error.</label>
+  <label><input type="radio" name="q26">B. It lowers the round‑off error introduced during subtraction.</label>
+  <label><input type="radio" name="q26">C. It halves the computation time for each derivative estimate.</label>
+  <label><input type="radio" name="q26">D. It removes the need to select an appropriate step size.</label>
+</div>
+
+<!-- Q27 -->
+<div class="question" data-answer="B" data-explain="Switching to a five‑point centered stencil cancels more terms and raises accuracy from O(h²) to O(h⁴).">
+  <h3>Q27 · Raising Centered Difference Order (2 points)</h3>
+  <p>What simple modification raises the order of a standard three‑point centered difference from O(<em>h</em><sup>2</sup>) to O(<em>h</em><sup>4</sup>)?</p>
+  <label><input type="radio" name="q27">A. Halve the step size <em>h</em> while reusing the same stencil.</label>
+  <label><input type="radio" name="q27">B. Use a five‑point centered stencil that includes <em>x ± 2h</em>.</label>
+  <label><input type="radio" name="q27">C. Add a correction term proportional to <em>h</em><sup>2</sup><em>f″</em>(ξ).</label>
+  <label><input type="radio" name="q27">D. Average the forward and backward differences from the same nodes.</label>
+</div>
+
+<!-- Q28 -->
+<div class="question" data-answer="A" data-explain="An odd polynomial evaluated symmetrically about zero has equal and opposite values, cancelling the numerator in the centered difference so the derivative is exact.">
+  <h3>Q28 · Centered Difference on Odd Functions (2 points)</h3>
+  <p>For a smooth odd polynomial centered at the origin, how accurate is the three‑point centered‑difference approximation of its derivative at <em>x</em> = 0?</p>
+  <label><input type="radio" name="q28">A. It is exact because the odd symmetry eliminates all truncation terms.</label>
+  <label><input type="radio" name="q28">B. It is first‑order accurate, O(<em>h</em>).</label>
+  <label><input type="radio" name="q28">C. It is second‑order accurate, O(<em>h</em><sup>2</sup>).</label>
+  <label><input type="radio" name="q28">D. It is undefined because division by zero occurs.</label>
+</div>
+
+<!-- Q29 -->
+<div class="question" data-answer="B" data-explain="Plotting log(error) versus log(h) reveals the point where the slope changes from negative (truncation‑dominated) to positive (round‑off‑dominated).">
+  <h3>Q29 · Step‑Size Choice with Noisy Data (2 points)</h3>
+  <p>When estimating derivatives from tabulated data contaminated by unknown noise, how should one select the finite‑difference step size?</p>
+  <label><input type="radio" name="q29">A. By minimising only the theoretical truncation error bound.</label>
+  <label><input type="radio" name="q29">B. By identifying the ‘knee’ on a log‑log plot of error versus <em>h</em>.</label>
+  <label><input type="radio" name="q29">C. By making <em>h</em> as small as the data spacing allows.</label>
+  <label><input type="radio" name="q29">D. Purely through trial‑and‑error without recourse to theory.</label>
+</div>
+
+<!-- Q30 -->
+<div class="question" data-answer="A" data-explain="The h·f‴(ξ) term is the first neglected term in the forward‑difference Taylor series expansion.">
+  <h3>Q30 · Origin of Truncation Term (2 points)</h3>
+  <p>The product <em>h</em>·<em>f‴</em>(ξ) appearing in the truncation error of a three‑point forward difference originates from which source?</p>
+  <label><input type="radio" name="q30">A. It is the first neglected term in the Taylor expansion.</label>
+  <label><input type="radio" name="q30">B. It arises from round‑off error analysis.</label>
+  <label><input type="radio" name="q30">C. It comes from the theory of divided differences.</label>
+  <label><input type="radio" name="q30">D. It is introduced by the Richardson extrapolation coefficients.</label>
+</div>
+
+<!-- Q31 -->
+<div class="question" data-answer="D" data-explain="The single‑segment trapezoidal rule has an error −(b−a)h²f″(ξ)/12, where h=b−a.">
+  <h3>Q31 · Trapezoidal Rule Error (2 points)</h3>
+  <p>For a single segment over [<em>a</em>,<em>b</em>], the truncation error of the trapezoidal rule is proportional to which expression?</p>
+  <label><input type="radio" name="q31">A. (<em>b − a</em>)<em>f′</em>(ξ).</label>
+  <label><input type="radio" name="q31">B. <em>h</em><sup>3</sup><em>f″</em>(ξ)/12.</label>
+  <label><input type="radio" name="q31">C. <em>h</em><sup>3</sup><em>f‴</em>(ξ)/12.</label>
+  <label><input type="radio" name="q31">D. <em>h</em><sup>2</sup><em>f″</em>(ξ)/12.</label>
+</div>
+
+<!-- Q32 -->
+<div class="question" data-answer="B" data-explain="For n segments of width h, the composite trapezoidal rule truncation error scales like O(h²).">
+  <h3>Q32 · Composite Trapezoidal Convergence (2 points)</h3>
+  <p>If the interval is divided into <em>n</em> equal segments of width <em>h</em>, how does the global error of the composite trapezoidal rule depend on <em>h</em>?</p>
+  <label><input type="radio" name="q32">A. It behaves like O(<em>h</em>).</label>
+  <label><input type="radio" name="q32">B. It behaves like O(<em>h</em><sup>2</sup>).</label>
+  <label><input type="radio" name="q32">C. It behaves like O(<em>h</em><sup>3</sup>).</label>
+  <label><input type="radio" name="q32">D. It behaves like O(<em>h</em><sup>4</sup>).</label>
+</div>
+
+<!-- Q33 -->
+<div class="question" data-answer="C" data-explain="Simpson’s 1⁄3 rule integrates exactly all polynomials up to cubic (degree 3).">
+  <h3>Q33 · Exactness of Simpson’s 1⁄3 Rule (2 points)</h3>
+  <p>Simpson’s 1⁄3 rule will integrate exactly every polynomial of degree no higher than which value?</p>
+  <label><input type="radio" name="q33">A. Degree 1.</label>
+  <label><input type="radio" name="q33">B. Degree 2.</label>
+  <label><input type="radio" name="q33">C. Degree 3.</label>
+  <label><input type="radio" name="q33">D. Degree 4.</label>
+</div>
+
+<!-- Q34 -->
+<div class="question" data-answer="C" data-explain="Because each 3⁄8 panel spans three sub‑intervals, n must be a multiple of 3.">
+  <h3>Q34 · Simpson’s 3⁄8 Rule Requirements (2 points)</h3>
+  <p>For Simpson’s 3⁄8 rule to apply directly to a composite grid, the number of sub‑intervals <em>n</em> must satisfy which condition?</p>
+  <label><input type="radio" name="q34">A. <em>n</em> must be even.</label>
+  <label><input type="radio" name="q34">B. <em>n</em> must be odd.</label>
+  <label><input type="radio" name="q34">C. <em>n</em> must be a multiple of 3.</label>
+  <label><input type="radio" name="q34">D. <em>n</em> must be a power of 2.</label>
+</div>
+
+<!-- Q35 -->
+<div class="question" data-answer="B" data-explain="Textbooks recommend patching one 3⁄8 panel onto four 1⁄3 panels to handle five sub‑intervals.">
+  <h3>Q35 · Integrating Five Segments (2 points)</h3>
+  <p>When an interval is partitioned into five equal segments, which composite strategy is commonly recommended to apply Simpson’s closed rules?</p>
+  <label><input type="radio" name="q35">A. Apply the 1⁄3 rule separately to each of the five segments.</label>
+  <label><input type="radio" name="q35">B. Apply four 1⁄3 panels plus one 3⁄8 panel to cover the five segments.</label>
+  <label><input type="radio" name="q35">C. Use the composite trapezoidal rule instead.</label>
+  <label><input type="radio" name="q35">D. Switch entirely to Gaussian quadrature.</label>
+</div>
+
+<!-- Q36 -->
+<div class="question" data-answer="C" data-explain="Romberg begins with trapezoidal approximations with successively halved step sizes: R(k,0)=T(h/2^k).">
+  <h3>Q36 · First Column of Romberg Table (2 points)</h3>
+  <p>In Romberg integration, how is the initial column R(<em>k</em>,0) generated?</p>
+  <label><input type="radio" name="q36">A. Using composite Simpson’s rule at each refinement level.</label>
+  <label><input type="radio" name="q36">B. Using Gaussian quadrature with increasing order.</label>
+  <label><input type="radio" name="q36">C. Using trapezoidal estimates with step sizes <em>h</em>, <em>h</em>/2, <em>h</em>/4, …</label>
+  <label><input type="radio" name="q36">D. Using the midpoint rule repeatedly.</label>
+</div>
+
+<!-- Q37 -->
+<div class="question" data-answer="D" data-explain="Each diagonal extrapolation in Romberg multiplies the accuracy order by 4 (two powers of h).">
+  <h3>Q37 · Accuracy Gain in Romberg (2 points)</h3>
+  <p>Each new diagonal entry R(<em>k</em>,<em>k</em>) in a Romberg tableau typically improves the order of accuracy by what factor compared with the previous diagonal entry?</p>
+  <label><input type="radio" name="q37">A. By one power of <em>h</em>.</label>
+  <label><input type="radio" name="q37">B. By doubling the order.</label>
+  <label><input type="radio" name="q37">C. By adding powers of two.</label>
+  <label><input type="radio" name="q37">D. By a factor of four in terms of error constant.</label>
+</div>
+
+<!-- Q38 -->
+<div class="question" data-answer="B" data-explain="Simpson’s 1⁄3 panels must be paired, so an odd number of segments leaves one segment unpaired.">
+  <h3>Q38 · Failure Case for Simpson’s 1⁄3 (2 points)</h3>
+  <p>Why does the standard composite Simpson’s 1⁄3 rule fail if the number of segments <em>n</em> is odd?</p>
+  <label><input type="radio" name="q38">A. Because the weights of the rule do not sum to zero.</label>
+  <label><input type="radio" name="q38">B. Because the last sub‑interval cannot be paired into a full 1⁄3 panel.</label>
+  <label><input type="radio" name="q38">C. Because the leading error term cancels, leaving no approximation.</label>
+  <label><input type="radio" name="q38">D. Because Chebyshev nodes are required but not available.</label>
+</div>
+
+<!-- Q39 -->
+<div class="question" data-answer="C" data-explain="A two‑point Gauss–Legendre rule is exact for polynomials up to degree 3 because it has order 2n−1.">
+  <h3>Q39 · Exactness of Gauss–Legendre (2 points)</h3>
+  <p>On the interval [−1,1], a two‑point Gauss–Legendre quadrature will integrate exactly all polynomials up to what degree?</p>
+  <label><input type="radio" name="q39">A. Degree 1.</label>
+  <label><input type="radio" name="q39">B. Degree 2.</label>
+  <label><input type="radio" name="q39">C. Degree 3.</label>
+  <label><input type="radio" name="q39">D. Degree 4.</label>
+</div>
+
+<!-- Q40 -->
+<div class="question" data-answer="B" data-explain="Adaptive algorithms compare two rules of differing order on the same sub‑interval and refine where the discrepancy exceeds the tolerance.">
+  <h3>Q40 · Mesh Refinement Criteria (2 points)</h3>
+  <p>In adaptive quadrature, where is the mesh most likely to be refined?</p>
+  <label><input type="radio" name="q40">A. Where the integrand is almost perfectly smooth.</label>
+  <label><input type="radio" name="q40">B. Where the discrepancy between two embedded rules exceeds a prescribed tolerance.</label>
+  <label><input type="radio" name="q40">C. Where the second derivative of the integrand is minimal.</label>
+  <label><input type="radio" name="q40">D. Wherever Simpson’s estimate happens to be exact.</label>
+</div>
+
+<!-- Q41 -->
+<div class="question" data-answer="A" data-explain="Combining two trapezoidal estimates with h and h/2 via (4I(h/2)−I(h))/3 cancels the O(h²) term, giving Simpson’s result.">
+  <h3>Q41 · Richardson for Integrals (2 points)</h3>
+  <p>Which combination of trapezoidal estimates with step sizes <em>h</em> and <em>h</em>/2 yields a Simpson‑equivalent Richardson extrapolation?</p>
+  <label><input type="radio" name="q41">A. (4 I(<em>h</em>/2) − I(<em>h</em>))⁄3.</label>
+  <label><input type="radio" name="q41">B. (I(<em>h</em>/2) + I(<em>h</em>))⁄2.</label>
+  <label><input type="radio" name="q41">C. (I(<em>h</em>) − I(<em>h</em>/2))⁄<em>h</em>.</label>
+  <label><input type="radio" name="q41">D. (3 I(<em>h</em>/2) − I(<em>h</em>))⁄2.</label>
+</div>
+
+<!-- Q42 -->
+<div class="question" data-answer="C" data-explain="Simpson’s 1⁄3 rule assigns weights 1,4,1 to the left node, middle node, and right node of each panel.">
+  <h3>Q42 · Weights in Simpson’s 1⁄3 Rule (2 points)</h3>
+  <p>What coefficient pattern multiplies the successive ordinates within a single Simpson’s 1⁄3 panel?</p>
+  <label><input type="radio" name="q42">A. 1, 1.</label>
+  <label><input type="radio" name="q42">B. 1, 2, 1.</label>
+  <label><input type="radio" name="q42">C. 1, 4, 1.</label>
+  <label><input type="radio" name="q42">D. 1, 3, 3, 1.</label>
+</div>
+
+<!-- Q43 -->
+<div class="question" data-answer="A" data-explain="Efficiency is judged mainly by how many sub‑intervals the formula requires to meet a target error for a typical integrand.">
+  <h3>Q43 · Efficiency of Newton–Cotes (2 points)</h3>
+  <p>When comparing closed Newton–Cotes formulas, which metric is most often used to judge their efficiency?</p>
+  <label><input type="radio" name="q43">A. The number of sub‑intervals needed to satisfy a target error tolerance.</label>
+  <label><input type="radio" name="q43">B. The absolute CPU time for each function evaluation.</label>
+  <label><input type="radio" name="q43">C. The total memory footprint of the algorithm.</label>
+  <label><input type="radio" name="q43">D. Merely the degree of the underlying interpolating polynomial.</label>
+</div>
+
+<!-- Q44 -->
+<div class="question" data-answer="B" data-explain="The composite Simpson’s 1⁄3 rule has a global leading error of −(b−a)h⁴f^{(4)}(ξ)/180.">
+  <h3>Q44 · Leading Error of Composite Simpson (2 points)</h3>
+  <p>What is the leading term of the global truncation error for the <em>n</em>-segment Simpson’s 1⁄3 rule?</p>
+  <label><input type="radio" name="q44">A. −(<em>b − a</em>)<em>h</em><sup>2</sup><em>f″</em>(ξ)/12.</label>
+  <label><input type="radio" name="q44">B. −(<em>b − a</em>)<em>h</em><sup>4</sup><em>f</em><sup>(4)</sup>(ξ)/180.</label>
+  <label><input type="radio" name="q44">C. −<em>h</em><sup>3</sup><em>f‴</em>(ξ)/12.</label>
+  <label><input type="radio" name="q44">D. −<em>h</em><sup>5</sup><em>f</em><sup>(5)</sup>(ξ)/90.</label>
+</div>
+
+<!-- Q45 -->
+<div class="question" data-answer="A" data-explain="For periodic integrands integrated over a full period, the composite trapezoidal rule exhibits exponential error decay due to aliasing cancellation of all even‑order error terms.">
+  <h3>Q45 · Periodic Integrands (2 points)</h3>
+  <p>For a smooth periodic function integrated over one full period, which classical rule tends to achieve the fastest convergence by cancelling even‑order error terms?</p>
+  <label><input type="radio" name="q45">A. The composite trapezoidal rule.</label>
+  <label><input type="radio" name="q45">B. Simpson’s 1⁄3 rule.</label>
+  <label><input type="radio" name="q45">C. Romberg integration based on trapezoidal estimates.</label>
+  <label><input type="radio" name="q45">D. The midpoint rule applied to half‑period sub‑intervals.</label>
+</div>
+
+<!-- Q46 -->
+<div class="question" data-answer="C" data-explain="Random MCQ — numerical linear algebra">
+  <h3>Q46 · Random Topic 1 (2 points)</h3>
+  <p>Which statement about the condition number of a matrix is correct?</p>
+  <label><input type="radio" name="q46">A. The condition number is zero for every nonsingular matrix.</label>
+  <label><input type="radio" name="q46">B. A small condition number implies the matrix is close to singular.</label>
+  <label><input type="radio" name="q46">C. A large condition number indicates that small input perturbations can produce large changes in the solution.</label>
+  <label><input type="radio" name="q46">D. The condition number is always less than one for any orthogonal matrix.</label>
+</div>
+
+<!-- Q47 -->
+<div class="question" data-answer="D" data-explain="Random MCQ — floating‑point representation">
+  <h3>Q47 · Random Topic 2 (2 points)</h3>
+  <p>What happens when adding two floating‑point numbers of vastly different magnitudes in IEEE double precision?</p>
+  <label><input type="radio" name="q47">A. The larger magnitude is always rounded toward zero.</label>
+  <label><input type="radio" name="q47">B. The smaller magnitude retains full precision while the larger suffers rounding.</label>
+  <label><input type="radio" name="q47">C. Both numbers are first converted to exact rational multiples of a power of two.</label>
+  <label><input type="radio" name="q47">D. The smaller magnitude may be lost entirely due to limited mantissa length (catastrophic cancellation).</label>
+</div>
+
+<!-- Q48 -->
+<div class="question" data-answer="B" data-explain="Random MCQ — ODE solvers">
+  <h3>Q48 · Random Topic 3 (2 points)</h3>
+  <p>Compared with Euler’s method, the classical fourth‑order Runge–Kutta method generally provides what advantage for the same step size?</p>
+  <label><input type="radio" name="q48">A. It requires fewer function evaluations per step.</label>
+  <label><input type="radio" name="q48">B. It achieves a much smaller local truncation error.</label>
+  <label><input type="radio" name="q48">C. It guarantees unconditional stability for stiff problems.</label>
+  <label><input type="radio" name="q48">D. It eliminates the possibility of round‑off error.</label>
+</div>
+
+<!-- Q49 -->
+<div class="question" data-answer="A" data-explain="Random MCQ — optimisation">
+  <h3>Q49 · Random Topic 4 (2 points)</h3>
+  <p>In unconstrained optimisation, which property must a point satisfy to be a candidate for a local minimum?</p>
+  <label><input type="radio" name="q49">A. The gradient of the objective function vanishes at that point.</label>
+  <label><input type="radio" name="q49">B. The Hessian matrix is indefinite at that point.</label>
+  <label><input type="radio" name="q49">C. The objective function value is lower than at all neighbouring points.</label>
+  <label><input type="radio" name="q49">D. The point lies on the feasible region boundary defined by constraints.</label>
+</div>
+
+<!-- Q50 -->
+<div class="question" data-answer="B" data-explain="Random MCQ — Monte Carlo integration">
+  <h3>Q50 · Random Topic 5 (2 points)</h3>
+  <p>For Monte Carlo integration in <em>d</em> dimensions, how does the standard error typically scale with the number of random samples <em>N</em>?</p>
+  <label><input type="radio" name="q50">A. It decreases proportionally to 1⁄<em>N</em>.</label>
+  <label><input type="radio" name="q50">B. It decreases proportionally to 1⁄√<em>N</em>.</label>
+  <label><input type="radio" name="q50">C. It decreases proportionally to <em>N</em><sup>−1⁄<em>d</em></sup>.</label>
+  <label><input type="radio" name="q50">D. It is independent of <em>N</em> once <em>N</em> exceeds 10<sup>5</sup>.</label>
+</div>
+
+</div>
+
+<script>
+// Auto‑grade logic
+(function(){
+  document.querySelectorAll('.question').forEach(q=>{
+    q.querySelectorAll('input[type="radio"]').forEach(radio=>{
+      radio.addEventListener('change',()=>{
+        if(q.classList.contains('graded')) return; // already answered
+        const answer=q.dataset.answer;
+        const explanation=q.dataset.explain;
+        const selected=radio.parentElement.textContent.trim().charAt(0);
+        q.classList.add('graded');
+        q.querySelectorAll('input[type="radio"]').forEach(inp=>inp.disabled=true);
+        const fb=document.createElement('p');
+        fb.className='feedback';
+        if(selected===answer){
+          fb.classList.add('correct');
+          fb.textContent='Correct! '+explanation;
+        }else{
+          fb.classList.add('incorrect');
+          fb.textContent='Incorrect. The correct answer is '+answer+'. '+explanation;
+        }
+        q.appendChild(fb);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
