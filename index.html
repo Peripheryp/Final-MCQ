@@ -2,122 +2,68 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Units 5–7 MCQs</title>
+<title>Units 5–7 Numerical Methods Quiz (50 Conceptual MCQs)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:2rem;background:#f9fafb;color:#111}
   h1{text-align:center;margin-bottom:1.5rem;font-size:2rem;font-weight:700}
-  .question{background:#fff;border:1px solid #d1d5db;border-radius:0.75rem;padding:1rem;margin-bottom:1.25rem;box-shadow:0 1px 2px rgba(0,0,0,0.05)}
-  .question p{margin:0 0 0.75rem;font-weight:600}
-  .options label{display:block;margin:.25rem 0;padding-left:1.25rem;position:relative;cursor:pointer}
-  .options input[type="radio"]{position:absolute;left:0;top:0.15rem}
-  .feedback{margin-top:.5rem;font-weight:600}
-  .correct{color:#15803d}
-  .incorrect{color:#b91c1c}
+  .question{background:#fff;border:1px solid #d1d5db;border-radius:8px;margin-bottom:1.25rem;padding:1rem;position:relative}
+  .question h3{margin:0 0 .5rem 0;font-size:1rem;font-weight:600}
+  .question p{margin:.25rem 0 .75rem 0;font-size:.95rem}
+  label{display:block;margin-left:1.25rem;font-size:.93rem;cursor:pointer}
+  .feedback{margin-top:.75rem;font-weight:600}
+  .correct{color:#059669}
+  .incorrect{color:#dc2626}
 </style>
 </head>
 <body>
-<h1>Units 5–7 Numerical Methods: 50 Hard MCQs</h1>
-<div id="quiz"></div>
-<script>
-const quizData=[
-// ---------- UNIT 5 (Interpolation) ------------
-{q:`Which fact guarantees that the Newton divided‑difference interpolating polynomial of degree n through n + 1 distinct abscissae is unique?`,opts:[`Existence of Chebyshev nodes`,`Invertibility of the Vandermonde matrix`,`Symmetry of divided differences`,`Periodicity of the data`],ans:1,exp:`Because the coefficients of the Newton (or Lagrange) polynomial solve a Vandermonde linear system whose matrix is nonsingular for distinct abscissae, uniqueness is assured.`},
-{q:`For equally‑spaced nodes, the principal error term of the Lagrange polynomial of degree n is proportional to`,opts:[`f^{(n+1)}(ξ) hⁿ`,`f^{(n+1)}(ξ) h^{n+1}`,`f^{(n)}(ξ) h^{n+1}`,`f^{(n+2)}(ξ) hⁿ`],ans:1,exp:`The general remainder term of degree n interpolation is f^{(n+1)}(ξ)\,(x−x₀)…(x−x_n)/(n+1)! which, for spacing h, scales with h^{n+1}.`},
-{q:`Runge’s phenomenon is most severe when`,opts:[`Chebyshev nodes are used with high degree`,`Equispaced nodes are used with high degree`,`Hermite interpolation is used`,`Cubic splines are used`],ans:1,exp:`Large‑degree polynomials through equally‑spaced points oscillate heavily at the ends (Runge). Using Chebyshev nodes or piece‑wise cubics avoids it.`},
-{q:`A property of divided differences is`,opts:[`They are invariant under permutation of data pairs`,`The k‑th order difference is zero for any polynomial of degree k – 1`,`Repetition of an x‑value forces the first divided difference to blow up`,`They require equally spaced data`],ans:1,exp:`If the data come from a polynomial of degree k−1, its k‑th divided difference vanishes.`},
-{q:`Neville’s algorithm for n + 1 points requires exactly`,opts:[`(n+1)(n+2)/2 additions`,`n(n+1)/2 additions`,`n² additions`,`2ⁿ additions`],ans:1,exp:`Neville builds a triangular tableau of size (n+1)(n+2)/2, giving that many additive operations.`},
-{q:`The barycentric form of the Lagrange polynomial is preferred because it`,opts:[`Reduces the storage of weights from O(n) to O(1)`,`Lowers the evaluation cost from O(n²) to O(n)`,`Avoids round‑off completely`,`Provides built‑in error estimates`],ans:1,exp:`Classical evaluation costs O(n²); barycentric rewrites it in O(n).`},
-{q:`If you interpolate f(x) and f′(x) at each end of [a,b] with a cubic Hermite, the resulting curve`,opts:[`Matches f(x) at three interior points exactly`,`Has the same integral as Simpson’s rule`,`Is the unique cubic satisfying the four conditions`,`Minimizes ∫(f″)² dx over [a,b]`],ans:2,exp:`Four boundary conditions (value & slope at two ends) determine a unique cubic polynomial.`},
-{q:`Inverse interpolation is normally preferred when`,opts:[`x is monotone in f and an interior root is sought`,`The data are noisy`,`The polynomial degree exceeds 10`,`End slopes are unavailable`],ans:0,exp:`Near a root, inverting to x(f) gives better conditioning since x varies smoothly with small changes in f.`},
-{q:`A natural cubic spline imposes`,opts:[`y″(a)=y″(b)=0`,`y′(a)=y′(b)=0`,`y(a)=y(b)=0`,`y‴(a)=y‴(b)=0`],ans:0,exp:`"Natural" means zero second‑derivative (no bending moment) at the ends.`},
-{q:`Compared with a single high‑degree polynomial, a cubic spline always`,opts:[`Gives lower maximum error for smooth data`,`Requires fewer floating‑point operations`,`Eliminates the need for solving linear systems`,`Preserves monotonicity automatically`],ans:0,exp:`Piece‑wise cubics with continuity give better uniform approximation (smaller max error) than one global high‑degree polynomial.`},
-{q:`The polynomial that exactly matches sin x at x = 0, π/2, π is at most of degree`,opts:[`1`,`2`,`3`,`>3`],ans:2,exp:`Three points determine a unique quadratic, but matching sin at 0, π/2, π actually requires a cubic to get the shape; the exact answer here was degree 3.`},
-{q:`The forward difference table for n + 1 equispaced points collapses to zero after row k when the data come from a polynomial of degree`,opts:[`k – 1`,`k`,`k + 1`,`2k`],ans:0,exp:`Finite differences of order equal to the polynomial degree + 1 vanish.`},
-{q:`The main drawback of global high‑degree polynomial interpolation is`,opts:[`Excessive round‑off in the weights`,`Lack of continuity in the first derivative`,`Highly oscillatory behavior near the ends`,`Failure to reproduce constants exactly`],ans:2,exp:`Runge oscillations near endpoints are the primary practical issue.`},
-{q:`When two abscissae coincide, divided‑difference formulas require replacing the quotient with`,opts:[`Zero`,`A derivative value`,`A spline knot value`,`The arithmetic mean`],ans:1,exp:`Repeated nodes lead to Hermite interpolation; divided‑difference is replaced by the corresponding derivative.`},
-{q:`Differentiating an interpolating polynomial gives a derivative whose truncation error at a node is of order`,opts:[`h`,`h²`,`hⁿ`,`h^{n−1}`],ans:3,exp:`If the interpolation error is O(h^{n+1}), differentiating lowers the order by one power of h.`},
-// ---------- UNIT 6 (Taylor & Differentiation) ------------
-{q:`The forward difference [f(x+h) – f(x)]/h approximates f′(x) with leading truncation error`,opts:[`O(h)`,`O(h²)`,`O(h³)`,`O(h⁻¹)`],ans:0,exp:`Truncation term is (h/2)f″(ξ).`},
-{q:`A centered difference with step h has error proportional to`,opts:[`h`,`h²`,`h³`,`h⁴`],ans:1,exp:`Three‑point centered difference is second‑order accurate – O(h²).`},
-{q:`Applying Richardson extrapolation to two centered O(h²) derivative estimates multiplies the accuracy order by`,opts:[`1`,`2`,`3`,`4`],ans:1,exp:`Combining estimates at h and h/2 cancels the O(h²) term, promoting to O(h⁴) – doubling the order.`},
-{q:`The optimum step size that balances round‑off (ε) and truncation (constant M) in a three‑point centered difference is`,opts:[`√(ε/M)`,`(3ε/M)^{1/3}`,`ε/M`,`(εM)^{1/2}`],ans:1,exp:`Total error ~ Mh² + ε/h; minimizing gives h ≈ (3ε/M)^{1/3}.`},
-{q:`When reducing h beyond the optimum value, the total error`,opts:[`Continues to drop at O(h²)`,`Plateaus`,`Rises because round‑off dominates`,`Remains constant`],ans:2,exp:`Round‑off error ~ ε/h blows up as h → 0.`},
-{q:`A five‑point forward difference uses how many function evaluations per derivative estimate?`,opts:[`3`,`4`,`5`,`6`],ans:2,exp:`It samples f(x), f(x+h),…, f(x+4h) – five calls.`},
-{q:`The second derivative approximation [f(x+h) – 2f(x) + f(x–h)]/h² is accurate to`,opts:[`O(h)`,`O(h²)`,`O(h³)`,`O(h⁴)`],ans:1,exp:`Leading error term involves h² f^{(4)}(ξ)/12.`},
-{q:`Which technique yields O(h⁴) accuracy without extra function calls once two O(h²) estimates are available?`,opts:[`High‑accuracy forward formula`,`Hermite interpolation`,`Richardson extrapolation`,`Romberg integration`],ans:2,exp:`Richardson extrapolation reuses existing evaluations to cancel lower‑order error.`},
-{q:`Finite‑difference formulas derived from the Taylor series are exact for polynomials of degree up to`,opts:[`The number of nodes minus 1`,`One less than the truncation order`,`Twice the number of nodes minus 1`,`Unlimited degree`],ans:0,exp:`With m nodes, you match up to degree m−1 exactly.`},
-{q:`Subtractive cancellation is most severe when`,opts:[`h is large`,`f(x+h) ≈ f(x–h)`,`The function is monotone`,`Using double precision`],ans:1,exp:`Nearly equal numbers discarded during subtraction lose significant digits.`},
-{q:`Including higher‑order terms in the Taylor expansion of a forward difference primarily`,opts:[`Reduces truncation error order`,`Reduces round‑off error`,`Halves computation time`,`Removes the need for step‑size selection`],ans:0,exp:`Truncation error decreases; round‑off unaffected.`},
-{q:`To raise a centered difference from O(h²) to O(h⁴) one must`,opts:[`Halve h only`,`Use a five‑point stencil`,`Add a correction term proportional to h² f″(ξ)`,`Average forward and backward differences`],ans:1,exp:`Five‑point centered stencil achieves fourth‑order accuracy directly.`},
-{q:`For a smooth odd polynomial, the three‑point centered difference at the origin is`,opts:[`Exact`,`Off by O(h)`,`Off by O(h²)`,`Undefined`],ans:0,exp:`Odd function ⇒ series f(x)=ax+bx³+… so f(−h)=−ax+bh³…; subtraction cancels error terms giving exact derivative  at x=0.`},
-{q:`When estimating derivatives from tabulated data of unknown noise level, step size should be chosen by`,opts:[`Minimizing theoretical truncation error only`,`Matching the point of diminishing returns on a log–log error plot`,`Making h as small as the data spacing allows`,`Trial‑and‑error without theory`],ans:1,exp:`Plotting error vs. h shows where noise dominates; pick h near the knee.`},
-{q:`The product h · f^{(3)}(ξ) in the truncation term of a three‑point forward difference comes from`,opts:[`The first neglected Taylor term`,`Round‑off analysis`,`Divided differences`,`Richardson coefficients`],ans:0,exp:`Dropping the f^{(3)} term leaves (h/2)f″ + (h²/6)f^{(3)} etc.`},
-// ---------- UNIT 7 (Integration) ------------
-{q:`The error of a single‑segment trapezoidal rule over [a,b] is proportional to`,opts:[`(b–a) f′(ξ)`,`h³ f″(ξ)/12`,`h³ f^{(3)}(ξ)/12`,`h² f″(ξ)/12`],ans:3,exp:`For one segment h=b–a; error = −(b−a)³ f″(ξ)/12 = −h³/12 f″(ξ).`},
-{q:`For n equal segments, the composite trapezoidal error behaves like`,opts:[`O(h)`,`O(h²)`,`O(h³)`,`O(h⁴)`],ans:1,exp:`Global error is O(h²) because local errors accumulate linearly.`},
-{q:`Simpson’s 1/3 rule integrates exactly every polynomial up to degree`,opts:[`1`,`2`,`3`,`4`],ans:2,exp:`It is third‑order exact (cubic).`},
-{q:`Simpson’s 3/8 rule requires the number of segments n to be`,opts:[`Even`,`Odd`,`A multiple of 3`,`A power of 2`],ans:2,exp:`The rule uses groups of three equal sub‑intervals.`},
-{q:`To integrate over 5 segments, the textbook recommends`,opts:[`Five applications of 1/3 rule`,`Mix 1/3 and 3/8 rules (four 1/3 plus one 3/8)`,`Pure trapezoidal rule`,`Gaussian quadrature`],ans:1,exp:`Chapra suggests combining a 3/8 on the last 3 sub‑intervals with 1/3 on the first 2.`},
-{q:`In Romberg integration, the first column R(k,0) is generated by`,opts:[`Composite Simpson’s rule`,`Gaussian quadrature`,`Successively halved‑step trapezoidal estimates`,`Midpoint rule`],ans:2,exp:`R(0,0)=T(h); R(1,0)=T(h/2); etc.`},
-{q:`Each new Romberg extrapolation R(k,k) improves the order of accuracy by a factor of`,opts:[`2`,`h`,`h²`,`4`],ans:3,exp:`Error order doubles: trapezoidal O(h²) → R(1,1) O(h⁴), etc. That equals multiplying the asymptotic error constant by h⁰ while increasing power by 2 ⇒ ×4 accuracy.`},
-{q:`Composite Simpson’s 1/3 rule fails directly if n is odd because`,opts:[`The coefficients do not sum to 0`,`The last sub‑interval cannot be paired`,`The error term vanishes`,`It requires Chebyshev nodes`],ans:1,exp:`Simpson’s 1/3 operates on consecutive pairs of segments; an odd leftover cannot be paired.`},
-{q:`A two‑point Gauss–Legendre rule on [–1,1] is exact for polynomials up to degree`,opts:[`1`,`2`,`3`,`4`],ans:2,exp:`n‑point Gauss rule integrates degree 2n−1 exactly ⇒ 3.`},
-{q:`Adaptive quadrature schemes refine the mesh where`,opts:[`The integrand is smooth`,`The local discrepancy between two rules exceeds a tolerance`,`The second derivative is small`,`The Simpson estimate is exact`],ans:1,exp:`Error estimators drive local subdivision until tolerance is met.`},
-{q:`Richardson extrapolation for integrals combines two trapezoidal estimates at h and h/2 as`,opts:[`(4I(h/2) − I(h))/3`,`(I(h/2)+I(h))/2`,`(I(h)−I(h/2))/h`,`(3I(h/2)−I(h))/2`],ans:0,exp:`It cancels the O(h²) term to yield Simpson’s estimate.`},
-{q:`In Simpson’s 1/3 rule the weights for successive ordinates are`,opts:[`1, 1`,`1, 2, 1`,`1, 4, 1`,`1, 3, 3, 1`],ans:2,exp:`Coefficients 1‑4‑1 on each pair.`},
-{q:`Efficiency of a closed Newton–Cotes formula is judged primarily by`,opts:[`The number of sub‑intervals needed for a target error`,`CPU cycles per function call`,`Memory footprint`,`The degree of the interpolating polynomial only`],ans:0,exp:`User cares how fine a mesh is needed to hit tolerance (i.e., global work).`},
-{q:`The leading error term of the n‑segment Simpson’s 1/3 rule is`,opts:[`−(b−a)h² f″(ξ)/12`,`−(b−a)h⁴ f^{(4)}(ξ)/180`,`−h³ f^{(3)}(ξ)/12`,`−h⁵ f^{(5)}(ξ)/90`],ans:1,exp:`Fourth‑order overall ⇒ coefficient −(b−a)h⁴ f^{(4)}(ξ)/180.`},
-{q:`For smooth periodic integrands over a full period, the rule that most rapidly cancels even‑order error terms is`,opts:[`Composite trapezoidal`,`Simpson’s 1/3`,`Romberg based on trapezoidal`,`Midpoint rule`],ans:0,exp:`For periodic functions the trapezoidal rule’s error constants vanish exponentially (Euler‑Maclaurin), giving spectral accuracy.`},
-// ---------- EXTRA RANDOM MCQs ------------
-{q:`In partial‑pivot Gaussian elimination, the pivot element at each step is chosen as`,opts:[`The first non‑zero element in the column`,`The smallest absolute value in the column`,`The largest absolute value in the column below (and including) the pivot row`,`The element with the least magnitude in the row`],ans:2,exp:`Choosing the largest magnitude entry limits the growth factor and improves numerical stability.`},
-{q:`For Jacobi iteration to converge on Ax = b, a sufficient condition is that`,opts:[`ρ(G)<1 where G is the iteration matrix`,`det(A)=0`,`A is symmetric only`,`All diagonal elements of A are zero`],ans:0,exp:`Spectral radius < 1 ensures the iteration error contracts each step.`},
-{q:`In LU factorisation without pivoting, a necessary condition for success is that`,opts:[`A is strictly diagonally dominant`,`All leading principal minors of A are non‑zero`,`A is positive definite`,`A is upper triangular`],ans:1,exp:`Non‑zero leading principal minors guarantee each pivot is non‑zero so elimination proceeds.`},
-{q:`The 2‑norm condition number κ₂(A) equals`,opts:[`σ_min/σ_max`,`σ_max/σ_min`,`‖A‖₂·‖A^{−1}‖₂ inverse`,`0 if and only if A is nonsingular`],ans:1,exp:`κ₂=σ_max/σ_min where σ_i are singular values.`},
-{q:`Newton–Raphson achieves quadratic convergence provided`,opts:[`f′(x*)≠0 at the root and the initial guess is sufficiently close`,`f″(x) is discontinuous`,`The step size is fixed`,`The root is multiple`],ans:0,exp:`Derivative non‑zero and smoothness near the simple root give quadratic error reduction.`}
-];
-// ----------- render quiz -----------------
-const quizDiv=document.getElementById('quiz');
-quizData.forEach((item,idx)=>{
-  const qDiv=document.createElement('div');
-  qDiv.className='question';
-  qDiv.innerHTML=`<p>${idx+1}. ${item.q}</p>`;
-  const optsDiv=document.createElement('div');
-  optsDiv.className='options';
-  item.opts.forEach((opt,i)=>{
-     const id=`q${idx}o${i}`;
-     const label=document.createElement('label');
-     label.innerHTML=`<input type="radio" name="q${idx}" id="${id}" value="${i}"> ${String.fromCharCode(65+i)}. ${opt}`;
-     optsDiv.appendChild(label);
-  });
-  qDiv.appendChild(optsDiv);
-  const fb=document.createElement('div');
-  fb.className='feedback';
-  qDiv.appendChild(fb);
-  quizDiv.appendChild(qDiv);
-});
-// ------------- interaction ---------------
-quizDiv.addEventListener('change',function(e){
-  if(e.target && e.target.matches('input[type="radio"]')){
-     const radio=e.target;
-     const qName=radio.name; // e.g., q12
-     const qIdx=parseInt(qName.slice(1));
-     const qObj=quizData[qIdx];
-     const chosen=parseInt(radio.value);
-     const questionContainer=radio.closest('.question');
-     const feedback=questionContainer.querySelector('.feedback');
-     // disable all radios in this question
-     questionContainer.querySelectorAll('input[type="radio"]').forEach(r=>r.disabled=true);
-     if(chosen===qObj.ans){
-        feedback.textContent="Correct! " + qObj.exp;
-        feedback.classList.add('correct');
-     }else{
-        const correctLetter=String.fromCharCode(65+qObj.ans);
-        feedback.textContent=`Incorrect. Correct answer: ${correctLetter}. ${qObj.exp}`;
-        feedback.classList.add('incorrect');
-     }
-  }
-});
-</script>
-</body>
-</html>
+<h1>Units 5–7 Numerical Methods: 50 Conceptual MCQs</h1>
+
+<div id="quiz">
+
+<!-- Q1 -->
+<div class="question" data-answer="B" data-explain="The divided‑difference polynomial is unique because its coefficient matrix is the Vandermonde matrix, and a Vandermonde built from distinct nodes is always nonsingular.">
+  <h3>Q1 · Interpolation Fundamentals (2 points)</h3>
+  <p>Which statement correctly explains why the Newton divided‑difference interpolating polynomial of degree <em>n</em> through <em>n + 1</em> distinct abscissae is unique?</p>
+  <label><input type="radio" name="q1">A. The existence of Chebyshev nodes enforces uniqueness of the polynomial.</label>
+  <label><input type="radio" name="q1">B. The Vandermonde matrix built from the abscissae is invertible, so the polynomial coefficients are uniquely determined.</label>
+  <label><input type="radio" name="q1">C. The symmetry property of divided differences makes any two such polynomials identical.</label>
+  <label><input type="radio" name="q1">D. Periodicity in the data values guarantees a single possible polynomial.</label>
+</div>
+
+<!-- Q2 -->
+<div class="question" data-answer="B" data-explain="For equally‑spaced nodes the leading error term is proportional to f^(n+1)(ξ) h^{n+1}.">
+  <h3>Q2 · Error Term in Lagrange Polynomial (2 points)</h3>
+  <p>For an equally‑spaced grid, the principal truncation error of the <em>n</em>‑degree Lagrange interpolating polynomial is proportional to which quantity?</p>
+  <label><input type="radio" name="q2">A. The (<em>n + 1</em>)‑st derivative times <em>h</em><sup>n</sup>.</label>
+  <label><input type="radio" name="q2">B. The (<em>n + 1</em>)‑st derivative times <em>h</em><sup>n+1</sup>.</label>
+  <label><input type="radio" name="q2">C. The <em>n</em>‑th derivative times <em>h</em><sup>n+1</sup>.</label>
+  <label><input type="radio" name="q2">D. The (<em>n + 2</em>)‑nd derivative times <em>h</em><sup>n</sup>.</label>
+</div>
+
+<!-- Q3 -->
+<div class="question" data-answer="B" data-explain="Runge’s phenomenon arises mainly with high‑degree polynomials fitted to equally‑spaced nodes near the ends of the interval, causing oscillations.">
+  <h3>Q3 · Runge’s Phenomenon (2 points)</h3>
+  <p>Under which circumstance is Runge’s phenomenon most likely to produce severe oscillations in an interpolating polynomial?</p>
+  <label><input type="radio" name="q3">A. High‑degree polynomials are fitted through Chebyshev‑distributed nodes.</label>
+  <label><input type="radio" name="q3">B. High‑degree polynomials are fitted through equally‑spaced nodes.</label>
+  <label><input type="radio" name="q3">C. Hermite interpolation is used with derivative matching.</label>
+  <label><input type="radio" name="q3">D. Cubic spline interpolation is used with natural boundary conditions.</label>
+</div>
+
+<!-- Q4 -->
+<div class="question" data-answer="B" data-explain="For any polynomial of degree k − 1 the k‑th forward difference of equally‑spaced data becomes zero, so statement B is correct.">
+  <h3>Q4 · Properties of Divided Differences (2 points)</h3>
+  <p>Which of the following statements about divided differences is true?</p>
+  <label><input type="radio" name="q4">A. They remain unchanged under any permutation of the data pairs.</label>
+  <label><input type="radio" name="q4">B. The <em>k</em>‑th order forward difference of equally‑spaced data is identically zero for any polynomial of degree <em>k − 1</em>.</label>
+  <label><input type="radio" name="q4">C. Repeating an <em>x</em>‑value always causes the first divided difference to diverge to infinity.</label>
+  <label><input type="radio" name="q4">D. Calculation of divided differences requires the nodes to be equally spaced.</label>
+</div>
+
+<!-- Q5 -->
+<div class="question" data-answer="B" data-explain="Neville’s recursive scheme fills half of a triangular table leading to n(n+1)/2 additive operations.">
+  <h3>Q5 · Neville’s Algorithm (2 points)</h3>
+  <p>When Neville’s algorithm is applied to <em>n + 1</em> data points, how many additions are performed?</p>
+  <label><input type="radio" name="q5">A. (<em>n + 1</em>)(<em>n + 2</em>)/2 additions are performed.</label>
+  <la
