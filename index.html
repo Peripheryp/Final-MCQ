@@ -95,7 +95,8 @@ function buildQuiz() {
     fb.className = 'feedback';
     form.addEventListener('change', e => {
       if (fb.textContent) return; // already answered
-      const chosen = parseInt(form.querySelector('input:checked').parentNode.style.color = '#e06e16';);
+      const chosen = parseInt(form.querySelector('input:checked').value, 10);
+      form.querySelector('input:checked').parentNode.style.color = '#e06e16';
       if (chosen === item.a) {
         fb.textContent = 'Correct!';
         fb.classList.add('correct');
